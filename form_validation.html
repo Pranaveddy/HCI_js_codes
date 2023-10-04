@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+    <script>
+        function validateUsername() {
+            var username = document.forms["myForm"]["username"].value;
+            if (username.length < 8) {
+                alert("Username should be at least 8 characters.");
+                return false;
+            }
+            return true;
+        }
+        function validatePassword() {
+            var password = document.forms["myForm"]["password"].value;
+            if (password.length < 8) {
+                alert("Password should be at least 8 characters.");
+                return false;
+            }
+            return true;
+        }
+        function validateRePassword() {
+            var password = document.forms["myForm"]["password"].value;
+            var rePassword = document.forms["myForm"]["rePassword"].value;
+            if (password !== rePassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+
+        function validatePhoneNumber() {
+            var phoneNumber = document.forms["myForm"]["phoneNumber"].value;
+            if (phoneNumber.length > 10) {
+                alert("Phone number should be at most 10 digits.");
+                return false;
+            }
+            return true;
+        }
+        function validatePinCode() {
+            var pinCode = document.forms["myForm"]["pinCode"].value;
+            if (pinCode.length > 6) {
+                alert("Pin code should be at most 6 digits.");
+                return false;
+            }else{
+                alert("pin should not be less than 6 digits");
+                return false;
+            }
+            return true;
+        }
+        function validateForm() {
+            return (
+                validateUsername() &&
+                validatePassword() &&
+                validateRePassword() &&
+                validatePhoneNumber() &&
+                validatePinCode()
+            );
+        }
+    </script>
+</head>
+<body>
+    <h1>Form Validation</h1>
+    <form name="myForm" onsubmit="return validateForm()" action="#" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" onblur="validateUsername()"><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" onblur="validatePassword()"><br>
+
+        <label for="rePassword">Re-enter Password:</label>
+        <input type="password" id="rePassword" name="rePassword" onblur="validateRePassword()"><br>
+
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" onblur="validatePhoneNumber()"><br>
+
+        <label for="pinCode">Pin Code:</label>
+        <input type="text" id="pinCode" name="pinCode" onblur="validatePinCode()"><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
